@@ -1,6 +1,6 @@
 import pytest
 from selenium import webdriver
-from config import *
+from .config import *
 
 @pytest.fixture
 def browser():

@@ -33,6 +33,10 @@ class BasePage:
         textarea = self.find_element(locator)
         textarea.send_keys(value)
 
+    def get_text(self, locator):
+        text = self.find_element(locator).text
+        return text
+
     def solve_quiz_and_get_code(self):
         alert = self.driver.switch_to.alert
         x = alert.text.split(" ")[2]
