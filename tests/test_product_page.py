@@ -1,5 +1,5 @@
 # file: test_product_page.py
-from product_page import ProductPage
+from pages.product_page import ProductPage
 
 
 def test_guest_can_add_product_to_basket(browser):
