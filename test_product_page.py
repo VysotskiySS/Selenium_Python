@@ -24,20 +24,20 @@ def test_guest_can_add_product_to_basket(browser, link):
     page.check_product_price()
 
 
-def test_guest_cant_see_success_message_after_adding_product_to_basket(browser, link='http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0'):
-    page = ProductPage(browser)
-    browser.get(link)
-    page.should_not_be_success_message()
-
-
-def test_guest_cant_see_success_message(browser, link='http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0'):
+def test_guest_cant_see_success_message_after_adding_product_to_basket(browser, link='http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207'):
     page = ProductPage(browser)
     browser.get(link)
     page.click_add_to_basket_btn()
     page.should_not_be_success_message()
 
 
-def test_message_disappeared_after_adding_product_to_basket(browser, link='http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0'):
+def test_guest_cant_see_success_message(browser, link='http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207'):
+    page = ProductPage(browser)
+    browser.get(link)
+    page.should_not_be_success_message()
+
+
+def test_message_disappeared_after_adding_product_to_basket(browser, link='http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207'):
     page = ProductPage(browser)
     browser.get(link)
     page.click_add_to_basket_btn()
