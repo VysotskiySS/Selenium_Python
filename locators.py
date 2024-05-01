@@ -1,4 +1,6 @@
 from selenium.webdriver.common.by import By
+
+
 class ProductLocators:
     ADD_TO_BASKET_BUTTON = (By.XPATH, "//button[contains(., 'Добавить в корзину')]")
     PRODUCT_NAME = (By.XPATH, "//div/h1")
@@ -7,3 +9,8 @@ class ProductLocators:
     PRODUCT_PRICE_MSG = (By.XPATH, "//div[@class='alert alert-safe alert-noicon alert-info  fade in']//strong")
     MSG = (By.XPATH, '//*[@id="messages"]')
     SUCCESS_MESSAGE = (By.CSS_SELECTOR, ".alert-success")
+
+
+class BasePageLocators:
+    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")

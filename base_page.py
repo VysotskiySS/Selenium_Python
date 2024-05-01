@@ -2,8 +2,9 @@ import math
 
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import NoAlertPresentException
+from selenium.common.exceptions import NoAlertPresentException, NoSuchElementException
 from selenium.common.exceptions import TimeoutException
+from locators import BasePageLocators
 from config import *
 
 
@@ -38,6 +39,13 @@ class BasePage:
         text = self.find_element(locator).text
         return text
 
+    def go_to_login_page(self):
+        link = self.driver.find_element(*BasePageLocators.LOGIN_LINK_INVALID)
+        link.click()
+
+    def should_be_login_link(self):
+        assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
+
     def solve_quiz_and_get_code(self):
         alert = self.driver.switch_to.alert
         x = alert.text.split(" ")[2]
@@ -68,3 +76,12 @@ class BasePage:
             return False
 
         return True
+
+    def is_element_present(self, locator):
+        try:
+            self.driver.find_element_by_xpath(locator)
+        except NoSuchElementException:
+            print('No such thing')
+            return False
+        return True
+
