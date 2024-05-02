@@ -1,5 +1,6 @@
 import math
 
+from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoAlertPresentException, NoSuchElementException
@@ -9,11 +10,11 @@ from config import *
 
 
 class BasePage:
-    def __init__(self, driver):
+    def __init__(self, driver, url):
         self.driver = driver
-        self.url = base_url
+        self.url = url
 
-    def go_to_site(self):
+    def open(self):
         return self.driver.get(self.url)
 
     def find_element(self, locator, time=10):
@@ -38,13 +39,6 @@ class BasePage:
     def get_text(self, locator):
         text = self.find_element(locator).text
         return text
-
-    def go_to_login_page(self):
-        link = self.driver.find_element(*BasePageLocators.LOGIN_LINK_INVALID)
-        link.click()
-
-    def should_be_login_link(self):
-        assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
 
     def solve_quiz_and_get_code(self):
         alert = self.driver.switch_to.alert
@@ -79,9 +73,15 @@ class BasePage:
 
     def is_element_present(self, locator):
         try:
-            self.driver.find_element_by_xpath(locator)
+            self.driver.find_element(By.CSS_SELECTOR, locator)
         except NoSuchElementException:
             print('No such thing')
             return False
         return True
 
+    def go_to_login_page(self):
+        login_link = self.driver.find_element(By.CSS_SELECTOR, "#login_link")
+        login_link.click()
+
+    def should_be_login_link(self):
+        assert self.is_element_present(BasePageLocators.LOGIN_LINK), "Login link is not presented"
