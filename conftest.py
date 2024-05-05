@@ -1,6 +1,5 @@
 import pytest
 from selenium import webdriver
-from config import *
 
 
 @pytest.fixture
@@ -14,3 +13,5 @@ def browser():
     yield browser
     print("\nquit browser..")
     browser.quit()
+
+

@@ -1,7 +1,5 @@
-import time
-
 from pages.base_page import BasePage
-from locators import *
+from pages.locators import *
 
 
 class LoginPage(BasePage):

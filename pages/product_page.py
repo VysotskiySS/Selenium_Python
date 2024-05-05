@@ -1,7 +1,7 @@
 # file: product_page.py
 
 from pages.base_page import BasePage
-from locators import ProductLocators
+from pages.locators import ProductLocators
 
 
 class ProductPage(BasePage):

@@ -4,16 +4,21 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoAlertPresentException, NoSuchElementException
 from selenium.common.exceptions import TimeoutException
-from locators import BasePageLocators
+from pages.locators import BasePageLocators
 
 
 class BasePage:
     def __init__(self, driver, url):
         self.driver = driver
         self.url = url
+        # self.driver.implicity_wait(10)
 
     def open(self):
         return self.driver.get(self.url)
+
+    def go_to_basket_page(self):
+        link = self.driver.find_element(*BasePageLocators.BASKET_LINK)
+        link.click()
 
     def find_element(self, locator, time=10):
         return WebDriverWait(self.driver, time).until(EC.presence_of_element_located(locator),
