@@ -14,6 +14,9 @@ class ProductLocators:
 class BasePageLocators:
     LOGIN_LINK = ("#login_link")
     LOGIN_LINK_INVALID = ("#login_link_inc")
+    USER_ICON = (By.CSS_SELECTOR, ".icon-user")
 
-# class LoginPageLocators:
 
+class LoginPageLocators:
+    LOGIN_FORM = ('#login_form')
+    REGISTER_FORM = ('#register_form')
