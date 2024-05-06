@@ -6,6 +6,7 @@ from .pages.base_page import BasePage
 
 
 class TestProductPage:
+
     # @pytest.mark.parametrize('link',
     #                          ["http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0",
     #                           "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer1",
@@ -19,13 +20,14 @@ class TestProductPage:
     #                               marks=pytest.mark.xfail),
     #                           "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer8",
     #                           "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer9"])
-    # def test_guest_can_add_product_to_basket(self, browser, link):
-    #     page = ProductPage(browser, link)
-    #     page.open()
-    #     page.click_add_to_basket_btn()
-    #     page.solve_quiz_and_get_code()
-    #     page.check_product_name()
-    #     page.check_product_price()
+    def test_guest_can_add_product_to_basket(self, browser):
+        link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0"
+        page = ProductPage(browser, link)
+        page.open()
+        page.click_add_to_basket_btn()
+        page.solve_quiz_and_get_code()
+        page.check_product_name()
+        page.check_product_price()
 
     @pytest.mark.xfail
     def test_guest_cant_see_success_message_after_adding_product_to_basket(self, browser):
