@@ -41,7 +41,7 @@ class TestProductPage:
         link = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207'
         page = ProductPage(browser, link)
         page.open()
-        browser.get(link)
+        # browser.get(link)
         page.should_not_be_success_message()
 
     @pytest.mark.xfail
