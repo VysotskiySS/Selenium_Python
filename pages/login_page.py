@@ -22,4 +22,7 @@ class LoginPage(BasePage):
         self.is_element_present(LoginPageLocators.REGISTER_FORM)
 
     def register_new_user(self, email, password):
-        print('test')
+        self.find_element(LoginPageLocators.REGISTER_EMAIL).send_keys(email)
+        self.find_element(LoginPageLocators.REGISTER_PASSWORD1).send_keys(password)
+        self.find_element(LoginPageLocators.REGISTER_PASSWORD2).send_keys(password)
+        self.find_element(LoginPageLocators.REGISTER_SUBMIT).click()

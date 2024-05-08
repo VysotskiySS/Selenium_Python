@@ -1,4 +1,6 @@
 import math
+import time
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -11,7 +13,6 @@ class BasePage:
     def __init__(self, driver, url):
         self.driver = driver
         self.url = url
-        # self.driver.implicity_wait(10)
 
     def open(self):
         return self.driver.get(self.url)
@@ -74,11 +75,18 @@ class BasePage:
 
         return True
 
-    def is_element_present(self, locator):
+    # def is_element_present(self, locator):
+    #     try:
+    #         self.driver.find_element(locator)
+    #     except NoSuchElementException:
+    #         print('No such thing')
+    #         return False
+    #     return True
+
+    def is_element_present(self, how, what):
         try:
-            self.driver.find_element(By.CSS_SELECTOR, locator)
+            self.driver.find_element(how, what)
         except NoSuchElementException:
-            print('No such thing')
             return False
         return True
 
@@ -87,8 +95,7 @@ class BasePage:
         login_link.click()
 
     def should_be_login_link(self):
-        assert self.is_element_present(BasePageLocators.LOGIN_LINK), "Login link is not presented"
+        assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
 
     def should_be_authorized_user(self):
-        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
-                                                                     " probably unauthorised user"
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented"
