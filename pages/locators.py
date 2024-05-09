@@ -1,12 +1,12 @@
 from selenium.webdriver.common.by import By
 
 
-class ProductLocators:
+class ProductPageLocators:
     ADD_TO_BASKET_BUTTON = (By.XPATH, "//*[@id='add_to_basket_form']/button")
     PRODUCT_NAME = (By.XPATH, "//div/h1")
-    PRODUCT_NAME_MSG = (By.XPATH, "//*[@id='messages']/div[1]/div/strong")
-    PRODUCT_PRICE = (By.XPATH, "//*[@class='col-sm-6 product_main']/p[@class='price_color']")
-    PRODUCT_PRICE_MSG = (By.XPATH, "//div[@class='alert alert-safe alert-noicon alert-info  fade in']//strong")
+    PRODUCT_NAME_MSG = (By.CSS_SELECTOR, "#messages > div:nth-child(1) .alertinner strong")
+    PRODUCT_PRICE = (By.CSS_SELECTOR, 'div.product_main p.price_color')
+    PRODUCT_PRICE_MSG = (By.CSS_SELECTOR, "#messages > div:nth-child(3) .alertinner strong")
     MSG = (By.XPATH, '//*[@id="messages"]')
     SUCCESS_MESSAGE = (By.CSS_SELECTOR, ".alert-success")
 
