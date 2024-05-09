@@ -18,4 +18,3 @@ class TestLoginFromMainPage:
         page = MainPage(browser, link)
         page.open()
         page.should_be_login_link()
-
