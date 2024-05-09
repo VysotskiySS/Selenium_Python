@@ -1,11 +1,10 @@
 # file: product_page.py
 
-from pages.base_page import BasePage
-from pages.locators import ProductLocators
+from .base_page import BasePage
+from .locators import ProductLocators
 
 
 class ProductPage(BasePage):
-
 
     def click_add_to_basket_btn(self):
         self.click(ProductLocators.ADD_TO_BASKET_BUTTON)

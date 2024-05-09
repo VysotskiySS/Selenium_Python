@@ -6,7 +6,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoAlertPresentException, NoSuchElementException
 from selenium.common.exceptions import TimeoutException
-from pages.locators import BasePageLocators
+from .locators import BasePageLocators
 
 
 class BasePage:
@@ -74,14 +74,6 @@ class BasePage:
             return False
 
         return True
-
-    # def is_element_present(self, locator):
-    #     try:
-    #         self.driver.find_element(locator)
-    #     except NoSuchElementException:
-    #         print('No such thing')
-    #         return False
-    #     return True
 
     def is_element_present(self, how, what):
         try:
