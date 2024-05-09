@@ -29,7 +29,7 @@ class TestProductPage:
                               "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer9"])
     @pytest.mark.need_review
     def test_guest_can_add_product_to_basket(self, browser, links):
-        page = ProductPage(browser, link)
+        page = ProductPage(browser, links)
         page.open()
         page.click_add_to_basket_btn()
         page.solve_quiz_and_get_code()
