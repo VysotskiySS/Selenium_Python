@@ -69,12 +69,12 @@ class TestUserAddToBasketFromProductPage:
 
     @pytest.fixture(scope='function', autouse=True)
     def setup(self, browser):
-        self.login_page = LoginPage(browser, self.login_link)
-        self.base_page = BasePage(browser, browser.current_url)
-        self.login_page.open()
+        login_page = LoginPage(browser, self.login_link)
+        base_page = BasePage(browser, browser.current_url)
+        login_page.open()
         email = str(random.randint(0, 99999999)) + "@mail.org"
-        self.login_page.register_new_user(email, 'Password123!')
-        self.base_page.should_be_authorized_user()
+        login_page.register_new_user(email, 'Password123!')
+        base_page.should_be_authorized_user()
 
     def test_user_cant_see_success_message(self, browser):
         page = ProductPage(browser, self.product_link)
